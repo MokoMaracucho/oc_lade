@@ -4,6 +4,7 @@ import com.oc.oc_lade.entity.Utilisateur;
 import com.oc.oc_lade.exception.ResourceNotFoundException;
 import com.oc.oc_lade.form.FormConnection;
 import com.oc.oc_lade.form.FormInscription;
+import com.oc.oc_lade.form.FormMajUtilisateur;
 import com.oc.oc_lade.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -29,6 +30,7 @@ public class UtilisateurController {
 
     public static final String ATT_FORM_INSCRIPTION 						= "formInscription";
     public static final String ATT_FORM_CONNECTION 							= "formConnection";
+    public static final String ATT_FORM_MAJ_UTILISATEUR						= "formMajUtilisateur";
 
     @Autowired
     private UtilisateurService utilisateurService;
@@ -80,6 +82,30 @@ public class UtilisateurController {
             model.addAttribute(ATT_UTILISATEUR, utilisateur);
             return "redirect:/utilisateur/liste_utilisateurs";
         }
+    }
+
+    @PostMapping("/maj_utilisateur")
+    public String majUtilisateur(HttpServletRequest request, @RequestParam(name="id") Long id, Model model) throws ResourceNotFoundException {
+        Utilisateur utilisateur = utilisateurService.getById(id);
+        FormMajUtilisateur formMajUtilisateur = utilisateurService.formulaireMajUtilisateur(utilisateur);
+        model.addAttribute(ATT_FORM_MAJ_UTILISATEUR, formMajUtilisateur);
+        HttpSession session = request.getSession();
+        utilisateur = utilisateurService.getById(id);
+        session.setAttribute(ATT_UTILISATEUR, utilisateur);
+        model.addAttribute(ATT_UTILISATEUR, utilisateur);
+        return "maj_utilisateur";
+    }
+
+    @PostMapping("/traitement_maj_utilisateur")
+    public String traitementMajUtilisateur(HttpServletRequest request, @Valid @ModelAttribute("formMajUtilisateur") FormMajUtilisateur formMajUtilisateur, BindingResult bindingResult, Model model) throws ResourceNotFoundException {
+        HttpSession session = request.getSession();
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute(ATT_UTILISATEUR);
+        Long id = utilisateur.getId();
+        utilisateur = utilisateurService.getById(id);
+        session.setAttribute(ATT_UTILISATEUR, utilisateur);
+        model.addAttribute(ATT_UTILISATEUR, utilisateur);
+        utilisateurService.updateUtilisateur(formMajUtilisateur);
+        return "redirect:/utilisateur/liste_utilisateurs";
     }
 
     @GetMapping("/deconnection_utilisateur")

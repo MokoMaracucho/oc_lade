@@ -4,6 +4,7 @@ import com.oc.oc_lade.entity.Privilege;
 import com.oc.oc_lade.entity.Utilisateur;
 import com.oc.oc_lade.exception.ResourceNotFoundException;
 import com.oc.oc_lade.form.FormInscription;
+import com.oc.oc_lade.form.FormMajUtilisateur;
 import com.oc.oc_lade.repository.UtilisateurRepository;
 import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,5 +68,45 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public List<Utilisateur> findAll() {
         return utilisateurRepository.findAll();
+    }
+
+    @Override
+    public FormMajUtilisateur formulaireMajUtilisateur(Utilisateur utilisateur) {
+        FormMajUtilisateur formMajUtilisateur = new FormMajUtilisateur();
+        formMajUtilisateur.setPrenomFormMajUtilisateur(utilisateur.getPrenom());
+        formMajUtilisateur.setNomFormMajUtilisateur(utilisateur.getNom());
+//		forMajUtilisateur.setEmailFormMajUtilisateur(utilisateur.getEmailUtilisateur());
+        if(utilisateur.getPrivilege() == Privilege.UTILISATEUR) {
+            formMajUtilisateur.setMembreFormMajUtilisateur(false);
+        } else {
+            formMajUtilisateur.setMembreFormMajUtilisateur(true);
+        }
+        return formMajUtilisateur;
+    }
+
+    @Override
+    public void updateUtilisateur(FormMajUtilisateur formMajUtilisateur) {
+        Long idUtilisateur = formMajUtilisateur.getIdFormMajUtilisateur();
+        Utilisateur utilisateur = utilisateurRepository.getById(idUtilisateur);
+        if(utilisateur.getPrenom() != formMajUtilisateur.getPrenomFormMajUtilisateur()) {
+            utilisateur.setPrenom(formMajUtilisateur.getPrenomFormMajUtilisateur());
+        }
+        if(utilisateur.getNom() != formMajUtilisateur.getNomFormMajUtilisateur()) {
+            utilisateur.setNom(formMajUtilisateur.getNomFormMajUtilisateur());
+        }
+//		if(utilisateur.getEmailUtilisateur() != formMajUtilisateur.getEmailFormMajUtilisateur()) {
+//			utilisateur.setEmailUtilisateur(formMajUtilisateur.getEmailFormMajUtilisateur());
+//			String emailMaj = formMajUtilisateur.getEmailFormMajUtilisateur();
+//			utilisateurRepository.majEmailUtilisateur(idUtilisateur, emailMaj);
+//		}
+        if(formMajUtilisateur.getMembreFormMajUtilisateur() == null) {
+            formMajUtilisateur.setMembreFormMajUtilisateur(false);
+        }
+        if(formMajUtilisateur.getMembreFormMajUtilisateur() == true) {
+            utilisateur.setPrivilege(Privilege.MEMBRE);
+        } else {
+            utilisateur.setPrivilege(Privilege.UTILISATEUR);
+        }
+        utilisateurRepository.save(utilisateur);
     }
 }
