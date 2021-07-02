@@ -12,3 +12,8 @@ INSERT INTO commentaire (commentaire, utilisateur_id, site_id) VALUES ('Pas pour
 INSERT INTO commentaire (commentaire, utilisateur_id, site_id) VALUES ('A la pointe !', '2', '2');
 INSERT INTO commentaire (commentaire, utilisateur_id, site_id) VALUES ('Quelle vue...', '1', '2');
 INSERT INTO commentaire (commentaire, utilisateur_id, site_id) VALUES ('Pas facile...', '3', '2');
+
+INSERT INTO secteur (nom, utilisateur_id, site_id) VALUES ('La Petite Marmotte', '1', '1');
+INSERT INTO secteur (nom, utilisateur_id, site_id) VALUES ('La Grande Marmotte', '3', '1');
+INSERT INTO secteur (nom, utilisateur_id, site_id) VALUES ('Le Vertigineux', '2', '2');
+INSERT INTO secteur (nom, utilisateur_id, site_id) VALUES ('Le Grandiose', '2', '2');
