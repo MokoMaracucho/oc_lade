@@ -1,6 +1,7 @@
 package com.oc.oc_lade.controller;
 
 import com.oc.oc_lade.entity.Utilisateur;
+import com.oc.oc_lade.exception.ResourceNotFoundException;
 import com.oc.oc_lade.form.FormInscription;
 import com.oc.oc_lade.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/utilisateur")
@@ -22,6 +24,7 @@ public class UtilisateurController {
     public static final String ATT_SESSION_STATUT							= "sessionStatut";
 
     public static final String ATT_UTILISATEUR				 				= "utilisateur";
+    public static final String ATT_LISTE_UTILISATEURS				 		= "listeUtilisateurs";
 
     public static final String ATT_FORM_INSCRIPTION 						= "formInscription";
 
@@ -54,5 +57,18 @@ public class UtilisateurController {
             model.addAttribute(ATT_UTILISATEUR, utilisateur);
             return "redirect:/utilisateur/liste_utilisateurs";
         }
+    }
+
+    @GetMapping("/liste_utilisateurs")
+    public String listeUtilisateurs(HttpServletRequest request, Model model) throws ResourceNotFoundException {
+        List<Utilisateur> listeUtilisateurs = utilisateurService.findAll();
+        HttpSession session = request.getSession();
+        model.addAttribute(ATT_LISTE_UTILISATEURS, listeUtilisateurs);
+        Utilisateur utilisateur = (Utilisateur) session.getAttribute(ATT_UTILISATEUR);
+        Long id = utilisateur.getId();
+        utilisateur = utilisateurService.getById(id);
+        session.setAttribute(ATT_UTILISATEUR, utilisateur);
+        model.addAttribute(ATT_UTILISATEUR, utilisateur);
+        return "liste_utilisateurs";
     }
 }
