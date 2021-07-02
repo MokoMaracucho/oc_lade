@@ -17,3 +17,8 @@ INSERT INTO secteur (nom, utilisateur_id, site_id) VALUES ('La Petite Marmotte',
 INSERT INTO secteur (nom, utilisateur_id, site_id) VALUES ('La Grande Marmotte', '3', '1');
 INSERT INTO secteur (nom, utilisateur_id, site_id) VALUES ('Le Vertigineux', '2', '2');
 INSERT INTO secteur (nom, utilisateur_id, site_id) VALUES ('Le Grandiose', '2', '2');
+
+INSERT INTO voie (nom, equipe, cotation, utilisateur_id, secteur_id) VALUES ('Le réveil de la Marmotte', '1', '4', '1', '1');
+INSERT INTO voie (nom, equipe, cotation, utilisateur_id, secteur_id) VALUES ('L''éffroyable Marmotte', '0', '6b', '3', '2');
+INSERT INTO voie (nom, equipe, cotation, utilisateur_id, secteur_id) VALUES ('Pour commencer', '0', '7', '2', '3');
+INSERT INTO voie (nom, equipe, cotation, utilisateur_id, secteur_id) VALUES ('Le Panorama', '0', '8a', '2', '4');

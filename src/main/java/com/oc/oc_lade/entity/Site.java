@@ -21,23 +21,30 @@ public class Site {
     private Utilisateur utilisateur;
 
     @OneToMany
+    @JoinColumn(name="secteur_id")
+    private List<Secteur> listeSecteurs;
+
+    @OneToMany
+    @JoinColumn(name="commentaire_id")
     private List<Commentaire> listeCommentaires;
 
     public Site() {
     }
 
-    public Site(String nom, String region, Utilisateur utilisateur, List<Commentaire> listeCommentaires) {
+    public Site(String nom, String region, Utilisateur utilisateur, List<Secteur> listeSecteurs, List<Commentaire> listeCommentaires) {
         this.nom = nom;
         this.region = region;
         this.utilisateur = utilisateur;
+        this.listeSecteurs = listeSecteurs;
         this.listeCommentaires = listeCommentaires;
     }
 
-    public Site(Long id, String nom, String region, Utilisateur utilisateur, List<Commentaire> listeCommentaires) {
+    public Site(Long id, String nom, String region, Utilisateur utilisateur, List<Secteur> listeSecteurs, List<Commentaire> listeCommentaires) {
         this.id = id;
         this.nom = nom;
         this.region = region;
         this.utilisateur = utilisateur;
+        this.listeSecteurs = listeSecteurs;
         this.listeCommentaires = listeCommentaires;
     }
 
@@ -73,6 +80,14 @@ public class Site {
         this.utilisateur = utilisateur;
     }
 
+    public List<Secteur> getListeSecteurs() {
+        return listeSecteurs;
+    }
+
+    public void setListeSecteurs(List<Secteur> listeSecteurs) {
+        this.listeSecteurs = listeSecteurs;
+    }
+
     public List<Commentaire> getListeCommentaires() {
         return listeCommentaires;
     }
@@ -88,6 +103,7 @@ public class Site {
                 ", nom='" + nom + '\'' +
                 ", region='" + region + '\'' +
                 ", utilisateur=" + utilisateur +
+                ", listeSecteurs=" + listeSecteurs +
                 ", listeCommentaires=" + listeCommentaires +
                 '}';
     }

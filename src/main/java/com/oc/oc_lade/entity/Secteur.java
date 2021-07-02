@@ -1,11 +1,8 @@
 package com.oc.oc_lade.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 public class Secteur {
@@ -22,6 +19,10 @@ public class Secteur {
 
     @ManyToOne
     private Site site;
+
+    @OneToMany
+    @JoinColumn(name="voie_id")
+    private List<Voie> listeVoies;
 
     public Secteur() {
     }

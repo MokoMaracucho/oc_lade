@@ -7,4 +7,6 @@ import com.oc.oc_lade.entity.Secteur;
 
 @Repository
 public interface SecteurRepository extends JpaRepository<Secteur, Long> {
+
+    Secteur getByNom(String nomSecteur);
 }
