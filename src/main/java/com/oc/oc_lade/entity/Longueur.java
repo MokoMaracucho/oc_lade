@@ -1,12 +1,14 @@
 package com.oc.oc_lade.entity;
 
-import java.util.List;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-public class Voie {
+public class Longueur {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -15,8 +17,6 @@ public class Voie {
     @NotEmpty
     private String nom;
 
-    private Boolean	equipe;
-
     @NotEmpty
     private String cotation;
 
@@ -24,32 +24,24 @@ public class Voie {
     private Utilisateur utilisateur;
 
     @ManyToOne
-    private Secteur secteur;
+    private Voie voie;
 
-    @OneToMany
-    @JoinColumn(name="longueur_id")
-    private List<Longueur> listeLongueurs;
-
-    public Voie() {
+    public Longueur() {
     }
 
-    public Voie(String nom, Boolean equipe, String cotation, Utilisateur utilisateur, Secteur secteur, List<Longueur> listeLongueurs) {
+    public Longueur(String nom, String cotation, Utilisateur utilisateur, Voie voie) {
         this.nom = nom;
-        this.equipe = equipe;
         this.cotation = cotation;
         this.utilisateur = utilisateur;
-        this.secteur = secteur;
-        this.listeLongueurs = listeLongueurs;
+        this.voie = voie;
     }
 
-    public Voie(Long id, String nom, Boolean equipe, String cotation, Utilisateur utilisateur, Secteur secteur, List<Longueur> listeLongueurs) {
+    public Longueur(Long id, String nom, String cotation, Utilisateur utilisateur, Voie voie) {
         this.id = id;
         this.nom = nom;
-        this.equipe = equipe;
         this.cotation = cotation;
         this.utilisateur = utilisateur;
-        this.secteur = secteur;
-        this.listeLongueurs = listeLongueurs;
+        this.voie = voie;
     }
 
     public Long getId() {
@@ -68,14 +60,6 @@ public class Voie {
         this.nom = nom;
     }
 
-    public Boolean getEquipe() {
-        return equipe;
-    }
-
-    public void setEquipe(Boolean equipe) {
-        this.equipe = equipe;
-    }
-
     public String getCotation() {
         return cotation;
     }
@@ -92,32 +76,22 @@ public class Voie {
         this.utilisateur = utilisateur;
     }
 
-    public Secteur getSecteur() {
-        return secteur;
+    public Voie getVoie() {
+        return voie;
     }
 
-    public void setSecteur(Secteur secteur) {
-        this.secteur = secteur;
-    }
-
-    public List<Longueur> getListeLongueurs() {
-        return listeLongueurs;
-    }
-
-    public void setListeLongueurs(List<Longueur> listeLongueurs) {
-        this.listeLongueurs = listeLongueurs;
+    public void setVoie(Voie voie) {
+        this.voie = voie;
     }
 
     @Override
     public String toString() {
-        return "Voie{" +
+        return "Longueur{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", equipe=" + equipe +
                 ", cotation='" + cotation + '\'' +
                 ", utilisateur=" + utilisateur +
-                ", secteur=" + secteur +
-                ", listeLongueurs=" + listeLongueurs +
+                ", voie=" + voie +
                 '}';
     }
 }
