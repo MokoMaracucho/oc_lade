@@ -2,6 +2,7 @@ package com.oc.oc_lade.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 public class Utilisateur {
@@ -23,19 +24,24 @@ public class Utilisateur {
 
     private Timestamp dateInscription;
 
+    @OneToMany
+    @JoinColumn(name="site_id")
+    private List<Site> listeSites;
+
     public Utilisateur() {
     }
 
-    public Utilisateur(String prenom, String nom, String email, String motPasse, Privilege privilege, Timestamp dateInscription) {
+    public Utilisateur(String prenom, String nom, String email, String motPasse, Privilege privilege, Timestamp dateInscription, List<Site> listeSites) {
         this.prenom = prenom;
         this.nom = nom;
         this.email = email;
         this.motPasse = motPasse;
         this.privilege = privilege;
         this.dateInscription = dateInscription;
+        this.listeSites = listeSites;
     }
 
-    public Utilisateur(Long id, String prenom, String nom, String email, String motPasse, Privilege privilege, Timestamp dateInscription) {
+    public Utilisateur(Long id, String prenom, String nom, String email, String motPasse, Privilege privilege, Timestamp dateInscription, List<Site> listeSites) {
         this.id = id;
         this.prenom = prenom;
         this.nom = nom;
@@ -43,6 +49,7 @@ public class Utilisateur {
         this.motPasse = motPasse;
         this.privilege = privilege;
         this.dateInscription = dateInscription;
+        this.listeSites = listeSites;
     }
 
     public Long getId() {
@@ -101,6 +108,14 @@ public class Utilisateur {
         this.dateInscription = dateInscription;
     }
 
+    public List<Site> getListeSites() {
+        return listeSites;
+    }
+
+    public void setListeSites(List<Site> listeSites) {
+        this.listeSites = listeSites;
+    }
+
     @Override
     public String toString() {
         return "Utilisateur{" +
@@ -111,6 +126,7 @@ public class Utilisateur {
                 ", motPasse='" + motPasse + '\'' +
                 ", privilege=" + privilege +
                 ", dateInscription=" + dateInscription +
+                ", listeSites=" + listeSites +
                 '}';
     }
 }
