@@ -1,0 +1,4 @@
+INSERT INTO utilisateur (prenom, nom, email, mot_passe, privilege, date_inscription) VALUES ('Federico', 'Desmoulin', 'desmoulin.federico@gmail.com', '9sVRxJqDHijMXpEOHUbWhNvmuRZ7ci/XnYXzMdMkRVixCw3eIPUusQ==', 'MEMBRE', '2020-02-01 11:11:11');
+INSERT INTO utilisateur (prenom, nom, email, mot_passe, privilege, date_inscription) VALUES ('Mathieu', 'Desmoulin', 'desmoulin.mathieu@gmail.com', '9sVRxJqDHijMXpEOHUbWhNvmuRZ7ci/XnYXzMdMkRVixCw3eIPUusQ==', 'UTILISATEUR', '2020-02-01 11:11:12');
+INSERT INTO utilisateur (prenom, nom, email, mot_passe, privilege, date_inscription) VALUES ('Guy', 'Desmoulin', 'desmoulin.guy@gmail.com', '9sVRxJqDHijMXpEOHUbWhNvmuRZ7ci/XnYXzMdMkRVixCw3eIPUusQ==', 'UTILISATEUR', '2020-02-01 11:11:13');
+INSERT INTO utilisateur (prenom, nom, email, mot_passe, privilege, date_inscription) VALUES ('Eugenia', 'Gomez', 'desmoulin.eugenia@gmail.com', '9sVRxJqDHijMXpEOHUbWhNvmuRZ7ci/XnYXzMdMkRVixCw3eIPUusQ==', 'UTILISATEUR', '2020-02-01 11:11:14');
