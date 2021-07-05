@@ -63,6 +63,8 @@
                     <a class="dropdown-item" href="/longueur/liste_longueurs">Liste des longueurs</a>
 
                     <a class="dropdown-item" href="/topo/liste_topos">Liste des topos</a>
+
+                    <a class="dropdown-item" href="/topo/liste_reservations_topo">Liste des réservations de topos</a>
                 </div>
             </li>
 

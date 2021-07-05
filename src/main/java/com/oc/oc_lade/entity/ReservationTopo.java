@@ -25,22 +25,22 @@ public class ReservationTopo {
     private Topo topo;
 
     @ManyToOne
-    private Utilisateur demandeur;
+    private Utilisateur utilisateur;
 
     public ReservationTopo() {
     }
 
-    public ReservationTopo(StatutReservationTopo statut, Topo topo, Utilisateur demandeur) {
+    public ReservationTopo(StatutReservationTopo statut, Topo topo, Utilisateur utilisateur) {
         this.statut = statut;
         this.topo = topo;
-        this.demandeur = demandeur;
+        this.utilisateur = utilisateur;
     }
 
-    public ReservationTopo(Long id, StatutReservationTopo statut, Topo topo, Utilisateur demandeur) {
+    public ReservationTopo(Long id, StatutReservationTopo statut, Topo topo, Utilisateur utilisateur) {
         this.id = id;
         this.statut = statut;
         this.topo = topo;
-        this.demandeur = demandeur;
+        this.utilisateur = utilisateur;
     }
 
     public Long getId() {
@@ -67,12 +67,12 @@ public class ReservationTopo {
         this.topo = topo;
     }
 
-    public Utilisateur getDemandeur() {
-        return demandeur;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setDemandeur(Utilisateur demandeur) {
-        this.demandeur = demandeur;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class ReservationTopo {
                 "id=" + id +
                 ", statut=" + statut +
                 ", topo=" + topo +
-                ", demandeur=" + demandeur +
+                ", utilisateur=" + utilisateur +
                 '}';
     }
 }
