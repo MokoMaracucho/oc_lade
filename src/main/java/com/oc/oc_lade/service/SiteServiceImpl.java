@@ -40,7 +40,6 @@ public class SiteServiceImpl implements SiteService {
     }
 
     @Override
-    @Transactional
     public List<Site> listeSites() {
         return siteRepository.findAll();
     }
@@ -48,5 +47,10 @@ public class SiteServiceImpl implements SiteService {
     @Override
     public Site findById(Long id) throws ResourceNotFoundException {
         return siteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+    }
+
+    @Override
+    public List<Site> findAllByNom(String nom, String region) throws ResourceNotFoundException {
+        return siteRepository.findAllByNom(nom, region);
     }
 }
