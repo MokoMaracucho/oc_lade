@@ -37,4 +37,9 @@ public class SecteurServiceImpl implements SecteurService {
     public List<Secteur> findAll() {
         return secteurRepository.findAll();
     }
+
+    @Override
+    public List<Secteur> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException {
+        return secteurRepository.findByNomAndRegion(nom, region);
+    }
 }

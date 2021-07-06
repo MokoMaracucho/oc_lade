@@ -16,5 +16,5 @@ public interface SiteRepository extends JpaRepository<Site, Long> {
     Site getByNom(String nomSite);
 
     @Query(value="SELECT * FROM db_lade.site WHERE nom = :nom AND region = :region", nativeQuery=true)
-    List<Site> findAllByNom(@Param("nom") String nom, @Param("region") String region);
+    List<Site> findByNomAndRegion(@Param("nom") String nom, @Param("region") String region);
 }

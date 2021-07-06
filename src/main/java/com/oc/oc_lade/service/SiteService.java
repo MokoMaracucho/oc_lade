@@ -13,7 +13,7 @@ public interface SiteService {
 
     public Site findById(Long id) throws ResourceNotFoundException;
 
-    public List<Site> findAllByNom(String nom, String region) throws ResourceNotFoundException;
+    public List<Site> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException;
 
     public List<Site> listeSites();
 }

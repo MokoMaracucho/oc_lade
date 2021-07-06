@@ -50,7 +50,7 @@ public class SiteServiceImpl implements SiteService {
     }
 
     @Override
-    public List<Site> findAllByNom(String nom, String region) throws ResourceNotFoundException {
-        return siteRepository.findAllByNom(nom, region);
+    public List<Site> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException {
+        return siteRepository.findByNomAndRegion(nom, region);
     }
 }
