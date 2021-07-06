@@ -1,8 +1,10 @@
 package com.oc.oc_lade.service;
 
 import com.oc.oc_lade.entity.Longueur;
+import com.oc.oc_lade.entity.Site;
 import com.oc.oc_lade.entity.Utilisateur;
 import com.oc.oc_lade.entity.Voie;
+import com.oc.oc_lade.exception.ResourceNotFoundException;
 import com.oc.oc_lade.form.FormAjoutLongueur;
 import com.oc.oc_lade.repository.LongueurRepository;
 import com.oc.oc_lade.repository.VoieRepository;
@@ -34,5 +36,10 @@ public class LongueurServiceImpl implements LongueurService {
     @Override
     public List<Longueur> findAll() {
         return longueurRepository.findAll();
+    }
+
+    @Override
+    public List<Longueur> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException {
+        return longueurRepository.findByNomAndRegion(nom, region);
     }
 }
