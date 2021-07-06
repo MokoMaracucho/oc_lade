@@ -23,6 +23,6 @@ public interface TopoRepository extends JpaRepository<Topo, Long> {
     @Query(value="SELECT * FROM topo WHERE nom = :nomRecherche AND region = :regionRecherche", nativeQuery=true)
     List<Topo> rechercheNomRegionTopo(@Param("nomRecherche") String nomRecherche, @Param("regionRecherche") String regionRecherche);
 
-    @Query(value="UPDATE topo SET disponibilite = :disponibilite WHERE id = :id", nativeQuery=true)
-    int majDisponibiliteTopo(@Param("id") Long id, @Param("disponibilite") Boolean disponibilite);
+    //@Query(value="UPDATE topo SET disponibilite = :disponibilite WHERE id = :id", nativeQuery=true)
+    //int majDisponibiliteTopo(@Param("id") Long id, @Param("disponibilite") Boolean disponibilite);
 }
