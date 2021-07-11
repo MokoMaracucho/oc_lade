@@ -16,6 +16,12 @@ public interface TopoService {
 
     public void enregistrerReservationTopo(Long idTopo, Utilisateur utilisateur);
 
+    public List<Topo> findByNom(String nom) throws ResourceNotFoundException;
+
+    public List<Topo> findByRegion(String region) throws ResourceNotFoundException;
+
+    public List<Topo> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException;
+
     public List<Topo> findAll();
 
     public List<ReservationTopo> listeReservationsTopo();

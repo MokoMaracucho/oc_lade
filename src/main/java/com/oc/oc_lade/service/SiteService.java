@@ -11,9 +11,15 @@ public interface SiteService {
 
     public void save(FormAjoutSite formAjoutSite, Utilisateur utilisateur);
 
+    public void save(Site site);
+
     public Site findById(Long id) throws ResourceNotFoundException;
 
     public List<Site> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException;
+
+    public List<Site> findByNom(String nom) throws ResourceNotFoundException;
+
+    public List<Site> findByRegion(String region) throws ResourceNotFoundException;
 
     public List<Site> listeSites();
 }

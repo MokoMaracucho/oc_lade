@@ -13,6 +13,9 @@ import java.util.List;
 @Repository
 public interface LongueurRepository extends JpaRepository<Longueur, Long> {
 
-    @Query(value="SELECT * FROM db_lade.longueur WHERE nom = :nom AND region = :region", nativeQuery=true)
+    @Query(value="SELECT * FROM longueur WHERE nom = :nom AND region = :region", nativeQuery=true)
     List<Longueur> findByNomAndRegion(@Param("nom") String nom, @Param("region") String region);
+
+    @Query(value="SELECT * FROM longueur WHERE nom = :nom", nativeQuery=true)
+    List<Longueur> findByNom(@Param("nom") String nom);
 }

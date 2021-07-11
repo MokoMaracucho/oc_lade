@@ -15,4 +15,6 @@ public interface VoieService {
     public List<Voie> findAll();
 
     public List<Voie> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException;
+
+    public List<Voie> findByNom(String nom) throws ResourceNotFoundException;
 }

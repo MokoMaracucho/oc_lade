@@ -40,6 +40,11 @@ public class SiteServiceImpl implements SiteService {
     }
 
     @Override
+    public void save(Site site) {
+        siteRepository.save(site);
+    }
+
+    @Override
     public List<Site> listeSites() {
         return siteRepository.findAll();
     }
@@ -52,5 +57,15 @@ public class SiteServiceImpl implements SiteService {
     @Override
     public List<Site> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException {
         return siteRepository.findByNomAndRegion(nom, region);
+    }
+
+    @Override
+    public List<Site> findByNom(String nom) throws ResourceNotFoundException {
+        return siteRepository.findByNom(nom);
+    }
+
+    @Override
+    public List<Site> findByRegion(String region) throws ResourceNotFoundException {
+        return siteRepository.findByRegion(region);
     }
 }

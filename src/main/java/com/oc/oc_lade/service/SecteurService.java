@@ -14,5 +14,7 @@ public interface SecteurService {
 
     public List<Secteur> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException;
 
+    public List<Secteur> findByNom(String nom) throws ResourceNotFoundException;
+
     public List<Secteur> findAll();
 }

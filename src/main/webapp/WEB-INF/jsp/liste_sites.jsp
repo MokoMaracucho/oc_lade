@@ -29,17 +29,33 @@
 					<th>ID</th>
 					<th>NOM</th>
 					<th>REGION</th>
+					<th>OFFICIEL</th>
 					<th>COMMENTAIRES</th>
 					<th>CRÉATEUR SITE</th>
 <!-- 					<th>MISE-À-JOUR</th> -->
-					<th>SUPRESSION</th>
+					<!--<th>SUPRESSION</th>-->
 				</tr>
 
 				<c:forEach var="site" items="${listeSites}">
 					<tr class="small">
 						<td>${site.id}</td>
-						<td>${site.nom}</td>
+						<td>
+						    ${site.nom}
+						    <c:if test="${site.officiel == 'true'}">
+						        [OFFICIEL]
+						    </c:if>
+						</td>
 						<td>${site.region}</td>
+						<td>
+						    <c:if test="${utilisateur.privilege eq 'MEMBRE'}">
+						        <c:if test="${site.officiel == 'false'}">
+                                    <form action="../site/site_officiel" method="get">
+                                        <input type="hidden" name="id" value="${site.id}" />
+                                        <input type="submit" class="btn btn-success" value="Officiel" />
+                                    </form>
+						        </c:if>
+						    </c:if>
+						</td>
 						<td>
 							<c:forEach var="commentaire" items="${listeCommentaires}">
 							    <c:if test="${commentaire.site.id == site.id}">
@@ -60,11 +76,11 @@
 <!-- 								<button class="btn btn-success">Mettre-à-jour</button> -->
 <%-- 							</form> --%>
 <!-- 						</td> -->
-						<td>
+						<!--<td>
 							<form action="supprimer_site" method="post">
 								<input type="hidden" name="id" value="${site.id}" />
 								<button class="btn btn-danger">Supprimer</button>
-							</form>
+							</form>-->
 						</td>
 					</tr>
 				</c:forEach>

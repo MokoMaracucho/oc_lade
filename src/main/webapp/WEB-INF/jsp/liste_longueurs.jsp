@@ -32,7 +32,7 @@
 					<th>COTATION</th>
 					<th>CRÉATEUR LONGUEUR</th>
 					<!--<th>MISE-À-JOUR</th>-->
-					<th>SUPRESSION</th>
+					<!--<th>SUPRESSION</th>-->
 				</tr>
 
 				<c:forEach var="longueur" items="${listeLongueurs}">
@@ -57,12 +57,12 @@
 <!-- 								<button class="btn btn-success">Mettre-à-jour</button> -->
 <%-- 							</form> --%>
 <!-- 						</td> -->
-						<td>
+						<!--<td>
 							<form action="supprimer_longueur" method="post">
 								<input type="hidden" name="id" value="${longueur.id}" />
 								<button class="btn btn-danger">Supprimer</button>
 							</form>
-						</td>
+						</td>-->
 					</tr>
 				</c:forEach>
 			</table>

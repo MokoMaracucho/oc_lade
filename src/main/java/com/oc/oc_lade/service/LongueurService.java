@@ -15,4 +15,6 @@ public interface LongueurService {
     public List<Longueur> findAll();
 
     public List<Longueur> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException;
+
+    public List<Longueur> findByNom(String nom) throws ResourceNotFoundException;
 }

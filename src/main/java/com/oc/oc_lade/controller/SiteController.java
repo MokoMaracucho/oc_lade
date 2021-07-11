@@ -3,6 +3,7 @@ package com.oc.oc_lade.controller;
 import com.oc.oc_lade.entity.Commentaire;
 import com.oc.oc_lade.entity.Site;
 import com.oc.oc_lade.entity.Utilisateur;
+import com.oc.oc_lade.exception.ResourceNotFoundException;
 import com.oc.oc_lade.form.FormAjoutSite;
 import com.oc.oc_lade.service.CommentaireService;
 import com.oc.oc_lade.service.SiteService;
@@ -10,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -57,6 +55,18 @@ public class SiteController {
 
     @GetMapping("/liste_sites")
     public String listeSites(Model model) {
+        List<Commentaire> listeCommentaires = commentaireService.listeCommentaires();
+        model.addAttribute(ATT_LISTE_COMMENTAIRES, listeCommentaires);
+        List<Site> listeSites = siteService.listeSites();
+        model.addAttribute(ATT_LISTE_SITES, listeSites);
+        return "liste_sites";
+    }
+
+    @GetMapping("/site_officiel")
+    public String siteOfficiel(HttpServletRequest request, @RequestParam(name="id") Long idSite, Model model) throws ResourceNotFoundException {
+        Site site = siteService.findById(idSite);
+        site.setOfficiel(true);
+        siteService.save(site);
         List<Commentaire> listeCommentaires = commentaireService.listeCommentaires();
         model.addAttribute(ATT_LISTE_COMMENTAIRES, listeCommentaires);
         List<Site> listeSites = siteService.listeSites();

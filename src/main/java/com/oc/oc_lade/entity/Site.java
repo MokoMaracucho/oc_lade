@@ -17,6 +17,8 @@ public class Site {
     @NotEmpty(message="Veuillez renseigner un nom de site.")
     private String region;
 
+    private Boolean officiel;
+
     @ManyToOne
     private Utilisateur utilisateur;
 
@@ -31,18 +33,20 @@ public class Site {
     public Site() {
     }
 
-    public Site(String nom, String region, Utilisateur utilisateur, List<Secteur> listeSecteurs, List<Commentaire> listeCommentaires) {
+    public Site(String nom, String region, Boolean officiel, Utilisateur utilisateur, List<Secteur> listeSecteurs, List<Commentaire> listeCommentaires) {
         this.nom = nom;
         this.region = region;
+        this.officiel = officiel;
         this.utilisateur = utilisateur;
         this.listeSecteurs = listeSecteurs;
         this.listeCommentaires = listeCommentaires;
     }
 
-    public Site(Long id, String nom, String region, Utilisateur utilisateur, List<Secteur> listeSecteurs, List<Commentaire> listeCommentaires) {
+    public Site(Long id, String nom, String region, Boolean officiel, Utilisateur utilisateur, List<Secteur> listeSecteurs, List<Commentaire> listeCommentaires) {
         this.id = id;
         this.nom = nom;
         this.region = region;
+        this.officiel = officiel;
         this.utilisateur = utilisateur;
         this.listeSecteurs = listeSecteurs;
         this.listeCommentaires = listeCommentaires;
@@ -70,6 +74,14 @@ public class Site {
 
     public void setRegion(String region) {
         this.region = region;
+    }
+
+    public Boolean getOfficiel() {
+        return officiel;
+    }
+
+    public void setOfficiel(Boolean officiel) {
+        this.officiel = officiel;
     }
 
     public Utilisateur getUtilisateur() {
@@ -102,6 +114,7 @@ public class Site {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", region='" + region + '\'' +
+                ", officiel=" + officiel +
                 ", utilisateur=" + utilisateur +
                 ", listeSecteurs=" + listeSecteurs +
                 ", listeCommentaires=" + listeCommentaires +

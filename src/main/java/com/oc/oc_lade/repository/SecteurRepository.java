@@ -15,6 +15,9 @@ public interface SecteurRepository extends JpaRepository<Secteur, Long> {
 
     Secteur getByNom(String nomSecteur);
 
-    @Query(value="SELECT * FROM db_lade.secteur WHERE nom = :nom AND region = :region", nativeQuery=true)
+    @Query(value="SELECT * FROM secteur WHERE nom = :nom AND region = :region", nativeQuery=true)
     List<Secteur> findByNomAndRegion(@Param("nom") String nom, @Param("region") String region);
+
+    @Query(value="SELECT * FROM secteur WHERE nom = :nom", nativeQuery=true)
+    List<Secteur> findByNom(@Param("nom") String nom);
 }

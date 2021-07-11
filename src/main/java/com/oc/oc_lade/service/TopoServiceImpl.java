@@ -93,4 +93,19 @@ public class TopoServiceImpl implements TopoService {
                 break;
         }
     }
+
+    @Override
+    public List<Topo> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException {
+        return topoRepository.findByNomAndRegion(nom, region);
+    }
+
+    @Override
+    public List<Topo> findByNom(String nom) throws ResourceNotFoundException {
+        return topoRepository.findByNom(nom);
+    }
+
+    @Override
+    public List<Topo> findByRegion(String region) throws ResourceNotFoundException {
+        return topoRepository.findByRegion(region);
+    }
 }

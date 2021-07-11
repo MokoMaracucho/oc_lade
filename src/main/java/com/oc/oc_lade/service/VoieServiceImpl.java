@@ -44,4 +44,9 @@ public class VoieServiceImpl implements VoieService {
     public List<Voie> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException {
         return voieRepository.findByNomAndRegion(nom, region);
     }
+
+    @Override
+    public List<Voie> findByNom(String nom) throws ResourceNotFoundException {
+        return voieRepository.findByNom(nom);
+    }
 }

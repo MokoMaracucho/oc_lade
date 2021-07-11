@@ -42,4 +42,9 @@ public class LongueurServiceImpl implements LongueurService {
     public List<Longueur> findByNomAndRegion(String nom, String region) throws ResourceNotFoundException {
         return longueurRepository.findByNomAndRegion(nom, region);
     }
+
+    @Override
+    public List<Longueur> findByNom(String nom) throws ResourceNotFoundException {
+        return longueurRepository.findByNom(nom);
+    }
 }

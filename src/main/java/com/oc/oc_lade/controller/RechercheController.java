@@ -51,43 +51,43 @@ public class RechercheController {
     @PostMapping("/traitement_formulaire_recherche_avancee")
     public String traitementFormulaireRechercheAvancee(HttpServletRequest request, FormRechercheAvancee formRechercheAvancee, Model model) throws ResourceNotFoundException {
         if(!formRechercheAvancee.getNom().isEmpty() && formRechercheAvancee.getRegion().isEmpty()) {
-            List<Site> listeSites = siteService.getByNom(formRechercheAvancee.getNom());
+            List<Site> listeSites = siteService.findByNom(formRechercheAvancee.getNom());
             if(!listeSites.isEmpty()) {
                 model.addAttribute(ATT_LISTE_SITES, listeSites);
             }
-            List<Secteur> listeSecteurs = secteurService.getByNom(formRechercheAvancee.getNom());
+            List<Secteur> listeSecteurs = secteurService.findByNom(formRechercheAvancee.getNom());
             if(!listeSecteurs.isEmpty()) {
                 model.addAttribute(ATT_LISTE_SECTEURS, listeSecteurs);
             }
-            List<Voie> listeVoies = voieService.getByNom(formRechercheAvancee.getNom());
+            List<Voie> listeVoies = voieService.findByNom(formRechercheAvancee.getNom());
             if(!listeVoies.isEmpty()) {
                 model.addAttribute(ATT_LISTE_VOIES, listeVoies);
             }
-            List<Longueur> listeLongueurs = longueurService.getByNom(formRechercheAvancee.getNom());
+            List<Longueur> listeLongueurs = longueurService.findByNom(formRechercheAvancee.getNom());
             if(!listeLongueurs.isEmpty()) {
                 model.addAttribute(ATT_LISTE_LONGUEURS, listeLongueurs);
             }
-            List<Topo> listeTopos = topoService.getByNom(formRechercheAvancee.getNom());
+            List<Topo> listeTopos = topoService.findByNom(formRechercheAvancee.getNom());
             if(!listeTopos.isEmpty()) {
                 model.addAttribute(ATT_LISTE_TOPOS, listeTopos);
             }
         }
         if(!formRechercheAvancee.getRegion().isEmpty() && formRechercheAvancee.getNom().isEmpty()) {
-            List<Site> listeSites = siteService.rechercheRegion(formRechercheAvancee.getRegion());
+            List<Site> listeSites = siteService.findByRegion(formRechercheAvancee.getRegion());
             if(!listeSites.isEmpty()) {
                 model.addAttribute(ATT_LISTE_SITES, listeSites);
             }
-            List<Topo> listeTopos = topoService.rechercheRegion(formRechercheAvancee.getRegion());
+            List<Topo> listeTopos = topoService.findByRegion(formRechercheAvancee.getRegion());
             if(!listeTopos.isEmpty()) {
                 model.addAttribute(ATT_LISTE_TOPOS, listeTopos);
             }
         }
         if(!formRechercheAvancee.getRegion().isEmpty() && !formRechercheAvancee.getNom().isEmpty()) {
-            List<Site> listeSites = siteService.rechercheNom(formRechercheAvancee.getNom(), formRechercheAvancee.getRegion());
+            List<Site> listeSites = siteService.findByNomAndRegion(formRechercheAvancee.getNom(), formRechercheAvancee.getRegion());
             if(!listeSites.isEmpty()) {
                 model.addAttribute(ATT_LISTE_SITES, listeSites);
             }
-            List<Topo> listeTopos = topoService.rechercheNom(formRechercheAvancee.getNom(), formRechercheAvancee.getRegion());
+            List<Topo> listeTopos = topoService.findByNomAndRegion(formRechercheAvancee.getNom(), formRechercheAvancee.getRegion());
             if(!listeTopos.isEmpty()) {
                 model.addAttribute(ATT_LISTE_TOPOS, listeTopos);
             }

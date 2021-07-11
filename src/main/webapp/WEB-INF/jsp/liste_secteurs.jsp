@@ -31,7 +31,7 @@
 					<th>SITE</th>
 					<th>CRÉATEUR SECTEUR</th>
 <!-- 					<th>MISE-À-JOUR</th> -->
-					<th>SUPRESSION</th>
+					<!--<th>SUPRESSION</th>-->
 				</tr>
 
 				<c:forEach var="secteur" items="${listeSecteurs}">
@@ -46,12 +46,12 @@
 <!-- 								<button class="btn btn-success">Mettre-à-jour</button> -->
 <%-- 							</form> --%>
 <!-- 						</td> -->
-						<td>
+						<!--<td>
 							<form action="supprimer_secteur" method="post">
 								<input type="hidden" name="id" value="${secteur.id}" />
 								<button class="btn btn-danger">Supprimer</button>
 							</form>
-						</td>
+						</td>-->
 					</tr>
 				</c:forEach>
 			</table>

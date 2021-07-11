@@ -7,15 +7,15 @@
 		<h1 class="font-weight-bold text-light">RECHERCHE AVANCÉE</h1>
 
 		<div class="form-group">
-			<label for="nomRecherche" class="form-label-color">Recherche par nom</label>
-			<form:errors path="nomRecherche" cssClass="small text-warning form-error" />
-			<form:input path="nomRecherche" cssClass="form-control" />
+			<label for="nom" class="form-label-color">Recherche par nom</label>
+			<form:errors path="nom" cssClass="small text-warning form-error" />
+			<form:input path="nom" cssClass="form-control" />
 		</div>
 
 		<div class="form-group">
-    		<label for="regionRecherche" class="form-label-color">Recherche par région</label>
-			<form:errors path="regionRecherche" cssClass="small text-warning form-error" />
-			<form:select path="regionRecherche" class="custom-select mr-sm-2">
+    		<label for="region" class="form-label-color">Recherche par région</label>
+			<form:errors path="region" cssClass="small text-warning form-error" />
+			<form:select path="region" class="custom-select mr-sm-2">
 				<form:option value="" />
 				<form:option value="Auvergne-Rhône-Alpes" />
 				<form:option value="Bourgogne-Franche-Comté" />
