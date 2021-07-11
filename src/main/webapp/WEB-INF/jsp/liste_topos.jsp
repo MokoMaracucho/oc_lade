@@ -35,7 +35,9 @@
 					<c:if test="${topo.disponibilite && topo.utilisateur.id != utilisateur.id}">
 						<th>DISPONIBILITÉ</th>
 					</c:if>
-					<th>SUPRESSION</th>
+					<c:if test="${utilisateur.privilege eq 'MEMBRE'}">
+					    <th>SUPRESSION</th>
+                    </c:if>
 				</tr>
 
 				<c:forEach var="topo" items="${listeTopos}">
@@ -54,12 +56,14 @@
 									</form>
 								</td>
 							</c:if>
-							<td>
-								<form action="supprimer_topo" method="post">
-									<input type="hidden" name="id" value="${topo.id}" />
-									<button class="btn btn-danger">Supprimer</button>
-								</form>
-							</td>
+							<c:if test="${utilisateur.privilege eq 'MEMBRE'}">
+                                <td>
+                                    <form action="supprimer_topo" method="post">
+                                        <input type="hidden" name="id" value="${topo.id}" />
+                                        <button class="btn btn-danger">Supprimer</button>
+                                    </form>
+                                </td>
+                            </c:if>
 						</tr>
 				</c:forEach>
 			</table>
