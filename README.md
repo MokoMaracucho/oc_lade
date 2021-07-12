@@ -7,3 +7,6 @@ Déploiement de l'application
 
 La base de données est automatiquement générée par Hibernate lors du chargement de l'application
 Emplacement du jeu de données : /src/main/resources/import.sql
+
+
+Lien vers le GitHub : https://github.com/MokoMaracucho/oc_lade.git
